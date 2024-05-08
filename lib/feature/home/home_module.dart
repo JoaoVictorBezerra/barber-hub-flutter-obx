@@ -11,8 +11,10 @@ class HomeModule extends Module {
   @override
   void routes(r) {
     r.child(
-      '/home',
-      child: (context) => const HomePage(),
+      Modular.initialRoute,
+      child: (context) => HomePage(
+        cubit: Modular.get<HomeCubit>(),
+      ),
     );
   }
 }

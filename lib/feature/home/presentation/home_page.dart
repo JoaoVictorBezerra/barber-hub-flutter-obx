@@ -1,7 +1,9 @@
+import 'package:barbershop/feature/home/cubits/home_cubit.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, required this.cubit});
+  final HomeCubit cubit;
 
   @override
   State<HomePage> createState() => _HomePageState();
