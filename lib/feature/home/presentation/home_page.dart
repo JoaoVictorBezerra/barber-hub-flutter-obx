@@ -226,7 +226,7 @@ class _HomePageState extends State<HomePage> {
                                 width: 159,
                                 height: 159,
                                 decoration: BoxDecoration(
-                                    color: Colors.black,
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.circular(16)),
                               ),
                               const Padding(
