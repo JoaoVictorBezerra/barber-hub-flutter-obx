@@ -1,12 +1,6 @@
-import 'dart:ui';
-
 import 'package:barbershop/feature/home/cubits/home_cubit.dart';
 import 'package:barbershop/feature/home/cubits/home_states.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,7 +15,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(20, 21, 24, 1),
       appBar: AppBar(
         toolbarHeight: 88,
         title: const Text('FSW BARBER'),
