@@ -39,6 +39,9 @@ dependencies:
   bloc: ^8.1.4
   flutter_bloc: ^8.1.5
 
+  design_system_obx: 
+    path: "../barber-hub-design-system-obx"
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
