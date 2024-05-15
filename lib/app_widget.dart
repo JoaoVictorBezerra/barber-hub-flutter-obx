@@ -8,7 +8,9 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'BARBERSHOP',
-      theme: ThemeData.dark(),
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
       routerConfig: Modular.routerConfig,
     );
   }

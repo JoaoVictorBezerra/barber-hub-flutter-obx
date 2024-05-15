@@ -1,10 +1,15 @@
 import 'package:barbershop/feature/home/cubits/home_cubit.dart';
 import 'package:barbershop/feature/home/cubits/home_states.dart';
+import 'package:barbershop/widgets/barbershop_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../widgets/custom_label.dart';
+import '../../../widgets/schedule_card.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.cubit});
+
   final HomeCubit cubit;
 
   @override
@@ -15,13 +20,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF141518),
       appBar: AppBar(
+        backgroundColor: Color(0xFF141518),
         toolbarHeight: 88,
-        title: const Text('FSW BARBER'),
+        title: const Text(
+          'FSW BARBER',
+          style: TextStyle(color: Colors.white),
+        ),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.menu),
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.white,
+            ),
           )
         ],
       ),
@@ -60,11 +73,15 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Text(
                                     'Olá, faça seu login!',
-                                    style: TextStyle(fontSize: 20),
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w700),
                                   ),
                                   Text(
                                     'Sexta, 10 de Maio',
-                                    style: TextStyle(fontSize: 14),
+                                    style: TextStyle(
+                                        fontSize: 14, color: Colors.white),
                                   ),
                                 ],
                               ),
@@ -80,30 +97,37 @@ class _HomePageState extends State<HomePage> {
                               child: TextField(
                                 decoration: InputDecoration(
                                   hintText: 'Buscar Barbearias',
+                                  fillColor: Color(0xFF1A1B1F),
+                                  filled: true,
+                                  hintStyle:
+                                      TextStyle(color: Color(0xFF838896)),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: const BorderSide(
-                                        color: Color.fromRGBO(38, 39, 43, 1)),
+                                      color: Color(0xFF26272B),
+                                    ),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   isDense: true,
-                                  contentPadding: const EdgeInsets.all(7),
+                                  contentPadding: const EdgeInsets.all(8),
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              child: Container(
-                                height: 36,
-                                width: 40,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: const Color.fromRGBO(129, 98, 255, 1),
-                                ),
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(Icons.search),
-                                  color: Colors.white,
+                            IconButton(
+                              onPressed: () {},
+                              // color: Color(0xFF8162FF),
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        const Color(0xFF8162FF)),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
                                 ),
                               ),
+                              icon: const Icon(Icons.search),
+                              color: Colors.white,
                             ),
                           ],
                         ),
@@ -113,73 +137,14 @@ class _HomePageState extends State<HomePage> {
                             Text(
                               'Agendamentos',
                               style: TextStyle(
-                                  color: Color.fromRGBO(131, 136, 150, 1),
-                                  fontSize: 12),
+                                color: Color(0xFF838896),
+                                fontSize: 12,
+                              ),
                             ),
                           ],
                         ),
                         const SizedBox(height: 10),
-                        Container(
-                          height: 111,
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              color: const Color.fromRGBO(26, 27, 31, 1),
-                              borderRadius: BorderRadius.circular(8)),
-                          child: const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    'Confirmado',
-                                    style: TextStyle(
-                                      color: Color.fromRGBO(129, 98, 255, 1),
-                                      backgroundColor:
-                                          Color.fromRGBO(34, 28, 61, 1),
-                                    ),
-                                  ),
-                                  Text(
-                                    'Corte de Cabelo',
-                                    style: TextStyle(fontSize: 20),
-                                  ),
-                                  Row(
-                                    children: [
-                                      CircleAvatar(
-                                        radius: 10,
-                                        backgroundImage: NetworkImage('url'),
-                                      ),
-                                      SizedBox(width: 5),
-                                      Text(
-                                        'Vintage Barber',
-                                        style: TextStyle(fontSize: 14),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Maio',
-                                    style: TextStyle(fontSize: 14),
-                                  ),
-                                  Text(
-                                    '10',
-                                    style: TextStyle(fontSize: 20),
-                                  ),
-                                  Text(
-                                    '10:00',
-                                    style: TextStyle(fontSize: 14),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
+                        ScheduleCard(),
                         const SizedBox(height: 30),
                         const Row(
                           children: [
@@ -192,81 +157,20 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                         const SizedBox(height: 10),
-                        // GridView.count(
-                        //   childAspectRatio: 0.9,
-                        //   scrollDirection: Axis.vertical,
-                        //   shrinkWrap: true,
-                        //   primary: false,
-                        //   padding: const EdgeInsets.all(0),
-                        //   crossAxisSpacing: 10,
-                        //   mainAxisSpacing: 10,
-                        //   crossAxisCount: 2,
-                        //   children: [],
-                        // ),
-                        Container(
-                          width: 168,
-                          height: 290,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: const Color.fromRGBO(26, 27, 31, 1),
-                          ),
-                          padding: const EdgeInsets.all(4),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 159,
-                                height: 159,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(16)),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 8, vertical: 4),
-                                child: Text(
-                                  'Vintage Barber',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 16),
-                                ),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 8, vertical: 4),
-                                child: Text(
-                                  'Avenida São Sebastião, 357, São Paulo',
-                                  style: TextStyle(
-                                      color: Color.fromRGBO(131, 136, 150, 1),
-                                      fontSize: 12),
-                                ),
-                              ),
-                              SizedBox(
-                                width: MediaQuery.sizeOf(context).width,
-                                child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all<
-                                            Color>(
-                                        const Color.fromRGBO(38, 39, 43, 1)),
-                                    shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                    ),
-                                  ),
-                                  onPressed: () {},
-                                  child: const Text(
-                                    "Reservar",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                        GridView.count(
+                          childAspectRatio: 0.9,
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          primary: false,
+                          padding: const EdgeInsets.all(0),
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          crossAxisCount: 2,
+                          children: [],
+                        ),
+                        const BarbershopCard(
+                          title: 'Vintage Barber',
+                          address: 'Avenida São Sebastião, 357, São Paulo',
                         ),
                       ],
                     ),
