@@ -1,3 +1,4 @@
+import 'package:barbershop/widgets/button.dart';
 import 'package:flutter/material.dart';
 
 class BarbershopCard extends StatelessWidget {
@@ -17,7 +18,7 @@ class BarbershopCard extends StatelessWidget {
       height: 290,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: const Color.fromRGBO(26, 27, 31, 1),
+        color: const Color(0xFF1A1B1F),
         border: Border.all(
           color: const Color(0xFF26272B),
         ),
@@ -46,33 +47,11 @@ class BarbershopCard extends StatelessWidget {
                 Text(
                   address,
                   style: const TextStyle(
-                    color: Color.fromRGBO(131, 136, 150, 1),
+                    color: Color(0xFF838896),
                     fontSize: 12,
                   ),
                 ),
-                SizedBox(
-                  width: MediaQuery.sizeOf(context).width,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                        const Color.fromRGBO(38, 39, 43, 1),
-                      ),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ),
-                    onPressed: () {},
-                    child: const Text(
-                      "Reservar",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ),
-                ),
+                CustomButton.secundary(text: 'Reservar')
               ],
             ),
           ),

@@ -9,7 +9,7 @@ class CustomLabel extends StatelessWidget {
   CustomLabel.primary({
     Key? key,
     required this.text,
-  }): super(key: key) {
+  }) : super(key: key) {
     backgroundColor = const Color(0xFF221C3D);
     textColor = const Color(0xFF8162FF);
   }
@@ -17,9 +17,17 @@ class CustomLabel extends StatelessWidget {
   CustomLabel.secondary({
     Key? key,
     required this.text,
-  }): super(key: key) {
+  }) : super(key: key) {
     backgroundColor = const Color(0xFF26272B);
     textColor = const Color(0xFF838896);
+  }
+
+  CustomLabel.tertiary({
+    Key? key,
+    required this.text,
+  }) : super(key: key) {
+    backgroundColor = const Color(0xFF2F1F1F);
+    textColor = const Color(0xFFEF4444);
   }
 
   @override

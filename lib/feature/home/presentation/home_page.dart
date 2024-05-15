@@ -4,7 +4,6 @@ import 'package:barbershop/widgets/barbershop_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../widgets/custom_label.dart';
 import '../../../widgets/schedule_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,9 +19,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF141518),
+      backgroundColor: const Color(0xFF141518),
       appBar: AppBar(
-        backgroundColor: Color(0xFF141518),
+        backgroundColor: const Color(0xFF141518),
         toolbarHeight: 88,
         title: const Text(
           'FSW BARBER',
@@ -93,11 +92,11 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: MediaQuery.sizeOf(context).width * 0.8,
+                              width: MediaQuery.sizeOf(context).width * 0.7,
                               child: TextField(
                                 decoration: InputDecoration(
                                   hintText: 'Buscar Barbearias',
-                                  fillColor: Color(0xFF1A1B1F),
+                                  fillColor: const Color(0xFF1A1B1F),
                                   filled: true,
                                   hintStyle:
                                       TextStyle(color: Color(0xFF838896)),
@@ -151,23 +150,22 @@ class _HomePageState extends State<HomePage> {
                             Text(
                               'Recomendados',
                               style: TextStyle(
-                                  color: Color.fromRGBO(131, 136, 150, 1),
-                                  fontSize: 12),
+                                  color: Color(0xFF838896), fontSize: 12),
                             ),
                           ],
                         ),
                         const SizedBox(height: 10),
-                        GridView.count(
-                          childAspectRatio: 0.9,
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          primary: false,
-                          padding: const EdgeInsets.all(0),
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          crossAxisCount: 2,
-                          children: [],
-                        ),
+                        // GridView.count(
+                        //   childAspectRatio: 0.9,
+                        //   scrollDirection: Axis.vertical,
+                        //   shrinkWrap: true,
+                        //   primary: false,
+                        //   padding: const EdgeInsets.all(0),
+                        //   crossAxisSpacing: 10,
+                        //   mainAxisSpacing: 10,
+                        //   crossAxisCount: 2,
+                        //   children: [],
+                        // ),
                         const BarbershopCard(
                           title: 'Vintage Barber',
                           address: 'Avenida São Sebastião, 357, São Paulo',
