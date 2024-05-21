@@ -51,7 +51,10 @@ class BarbershopCard extends StatelessWidget {
                     fontSize: 12,
                   ),
                 ),
-                CustomButton.secundary(text: 'Reservar')
+                CustomButton.secundary(
+                  text: 'Reservar',
+                  size: MediaQuery.sizeOf(context).width,
+                )
               ],
             ),
           ),
