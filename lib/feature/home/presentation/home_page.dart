@@ -7,7 +7,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/schedule_card.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.cubit});
+  const HomePage({
+    super.key,
+    required this.cubit,
+  });
 
   final HomeCubit cubit;
 
@@ -42,19 +45,11 @@ class _HomePageState extends State<HomePage> {
           children: [
             BlocBuilder<HomeCubit, HomeStates>(
               builder: (context, state) {
-                if (state is InitialHomeState) {
-                  return Column(
-                    children: [
-                      const Text('estado inicial'),
-                      ElevatedButton(
-                        onPressed: () => widget.cubit.changeMood(),
-                        child: const Text('Clicou'),
-                      )
-                    ],
-                  );
-                }
                 if (state is LoadingHomeState) {
-                  return const Text('Carregando');
+                  widget.cubit.changeMood();
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
                 }
                 if (state is LoadedHomeState) {
                   return SingleChildScrollView(
@@ -99,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                                   fillColor: const Color(0xFF1A1B1F),
                                   filled: true,
                                   hintStyle:
-                                      TextStyle(color: Color(0xFF838896)),
+                                      const TextStyle(color: Color(0xFF838896)),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: const BorderSide(
                                       color: Color(0xFF26272B),
@@ -113,7 +108,6 @@ class _HomePageState extends State<HomePage> {
                             ),
                             IconButton(
                               onPressed: () {},
-                              // color: Color(0xFF8162FF),
                               style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
@@ -143,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                         const SizedBox(height: 10),
-                        ScheduleCard(),
+                        const ScheduleCard(),
                         const SizedBox(height: 30),
                         const Row(
                           children: [

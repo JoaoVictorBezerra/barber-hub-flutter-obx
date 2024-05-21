@@ -2,11 +2,13 @@ import 'package:barbershop/widgets/button.dart';
 import 'package:flutter/material.dart';
 
 class ServiceCard extends StatelessWidget {
-  const ServiceCard(
-      {super.key,
-      required this.serviceTitle,
-      required this.serviceDescription,
-      required this.price});
+  const ServiceCard({
+    super.key,
+    required this.serviceTitle,
+    required this.serviceDescription,
+    required this.price,
+  });
+
   final String serviceTitle;
   final String serviceDescription;
   final String price;
@@ -71,7 +73,11 @@ class ServiceCard extends StatelessWidget {
                             fontSize: 14,
                           ),
                         ),
-                        CustomButton.secundary(text: 'Reservar', size: null),
+                        CustomButton.secundary(
+                          text: 'Reservar',
+                          size: null,
+                          route: 'null',
+                        ),
                       ],
                     ),
                   ],

@@ -1,11 +1,12 @@
 import 'package:barbershop/widgets/button.dart';
 import 'package:barbershop/widgets/service_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class BarberCardPage extends StatefulWidget {
-  const BarberCardPage({super.key});
+  const BarberCardPage({
+    super.key,
+  });
 
   @override
   State<BarberCardPage> createState() => _BarberCardPageState();
@@ -47,7 +48,7 @@ class _BarberCardPageState extends State<BarberCardPage> {
                             color: Colors.white,
                           ),
                           onPressed: () {
-                            Navigator.pop(context);
+                            Modular.to.navigate(Modular.initialRoute);
                           },
                         ),
                       ),
@@ -146,6 +147,7 @@ class _BarberCardPageState extends State<BarberCardPage> {
                   CustomButton.primary(
                     text: 'Serviço',
                     size: null,
+                    route: 'null',
                   ),
                   const SizedBox(
                     width: 10,
@@ -153,6 +155,7 @@ class _BarberCardPageState extends State<BarberCardPage> {
                   CustomButton.quarter(
                     text: 'Informações',
                     size: null,
+                    route: 'null',
                   )
                 ],
               ),

@@ -2,17 +2,24 @@ import 'package:barbershop/widgets/custom_label.dart';
 import 'package:flutter/material.dart';
 
 class ScheduleCard extends StatelessWidget {
-  const ScheduleCard({super.key});
+  const ScheduleCard({
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     return Container(
       // height: 111,
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
-          color: const Color(0xFF1A1B1F),
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: const Color(0xFF26272B))),
+        color: const Color(0xFF1A1B1F),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: const Color(0xFF26272B),
+        ),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -20,11 +27,16 @@ class ScheduleCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              CustomLabel.primary(text: 'Confirmado'),
+              CustomLabel.primary(
+                text: 'Confirmado',
+              ),
               const SizedBox(height: 8),
               const Text(
                 'Corte de Cabelo',
-                style: TextStyle(fontSize: 20, color: Colors.white),
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
               ),
               const SizedBox(height: 8),
               const Row(
@@ -40,7 +52,10 @@ class ScheduleCard extends StatelessWidget {
                   SizedBox(width: 5),
                   Text(
                     'Vintage Barber',
-                    style: TextStyle(fontSize: 14, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                    ),
                   ),
                 ],
               )
@@ -51,15 +66,24 @@ class ScheduleCard extends StatelessWidget {
             children: [
               Text(
                 'Maio',
-                style: TextStyle(fontSize: 14, color: Colors.white),
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.white,
+                ),
               ),
               Text(
                 '10',
-                style: TextStyle(fontSize: 20, color: Colors.white),
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
               ),
               Text(
                 '10:00',
-                style: TextStyle(fontSize: 14, color: Colors.white),
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.white,
+                ),
               ),
             ],
           )
