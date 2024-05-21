@@ -9,5 +9,7 @@ class LoadedRegisterState extends RegisterState {}
 class ErrorRegisterState extends RegisterState {
   final String message;
 
-  ErrorRegisterState({required this.message});
+  ErrorRegisterState({
+    required this.message,
+  });
 }
