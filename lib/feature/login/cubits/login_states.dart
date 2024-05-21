@@ -9,5 +9,7 @@ class LoadedLoginState extends LoginState {}
 class ErroLoginState extends LoginState {
   final String message;
 
-  ErroLoginState({required this.message});
+  ErroLoginState({
+    required this.message,
+  });
 }
