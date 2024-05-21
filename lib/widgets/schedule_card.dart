@@ -21,12 +21,12 @@ class ScheduleCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               CustomLabel.primary(text: 'Confirmado'),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               const Text(
                 'Corte de Cabelo',
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               const Row(
                 children: [
                   SizedBox(
