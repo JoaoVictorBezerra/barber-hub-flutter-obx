@@ -8,6 +8,7 @@ class ServiceCard extends StatelessWidget {
     required this.serviceDescription,
     required this.price,
   });
+
   final String serviceTitle;
   final String serviceDescription;
   final String price;
@@ -72,7 +73,11 @@ class ServiceCard extends StatelessWidget {
                             fontSize: 14,
                           ),
                         ),
-                        CustomButton.secundary(text: 'Reservar', size: null),
+                        CustomButton.secundary(
+                          text: 'Reservar',
+                          size: null,
+                          route: 'null',
+                        ),
                       ],
                     ),
                   ],
