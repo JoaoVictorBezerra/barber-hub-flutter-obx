@@ -4,7 +4,6 @@ class CustomLabel extends StatelessWidget {
   final String text;
   late final Color backgroundColor;
   late final Color textColor;
-  // const CustomLabel({super.key});
 
   CustomLabel.primary({
     Key? key,
