@@ -51,7 +51,7 @@ class ServiceCard extends StatelessWidget {
                     Text(
                       serviceTitle,
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: const Color(0xFFFFFFFF),
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
                       ),
@@ -75,8 +75,7 @@ class ServiceCard extends StatelessWidget {
                         ),
                         CustomButton.secundary(
                           text: 'Reservar',
-                          size: null,
-                          route: 'null',
+                          onPressedFunction: () {},
                         ),
                       ],
                     ),

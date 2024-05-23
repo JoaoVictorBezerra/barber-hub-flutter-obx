@@ -1,18 +1,19 @@
+import 'package:barbershop/feature/barbershop/utils/data_barbershop.dart';
 import 'package:barbershop/widgets/button.dart';
 import 'package:barbershop/widgets/service_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class BarberCardPage extends StatefulWidget {
-  const BarberCardPage({
+class BarberShopPage extends StatefulWidget {
+  const BarberShopPage({
     super.key,
   });
 
   @override
-  State<BarberCardPage> createState() => _BarberCardPageState();
+  State<BarberShopPage> createState() => _BarberShopPageState();
 }
 
-class _BarberCardPageState extends State<BarberCardPage> {
+class _BarberShopPageState extends State<BarberShopPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +27,8 @@ class _BarberCardPageState extends State<BarberCardPage> {
                   width: MediaQuery.sizeOf(context).width,
                   height: 250,
                   child: Container(
-                    decoration: const BoxDecoration(color: Colors.white),
+                    decoration:
+                        const BoxDecoration(color: const Color(0xFFFFFFFF)),
                   ),
                 ),
                 Padding(
@@ -45,10 +47,10 @@ class _BarberCardPageState extends State<BarberCardPage> {
                         child: IconButton(
                           icon: const Icon(
                             Icons.arrow_back_ios_new,
-                            color: Colors.white,
+                            color: const Color(0xFFFFFFFF),
                           ),
-                          onPressed: () {
-                            Modular.to.navigate(Modular.initialRoute);
+                          onPressed: () => {
+                            Modular.to.pop(),
                           },
                         ),
                       ),
@@ -62,7 +64,7 @@ class _BarberCardPageState extends State<BarberCardPage> {
                         child: IconButton(
                           icon: const Icon(
                             Icons.menu,
-                            color: Colors.white,
+                            color: const Color(0xFFFFFFFF),
                           ),
                           onPressed: () {},
                         ),
@@ -83,34 +85,33 @@ class _BarberCardPageState extends State<BarberCardPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'Vintage Barber',
+                        'barbeiro',
                         style: TextStyle(
-                            color: Colors.white,
+                            color: const Color(0xFFFFFFFF),
                             fontSize: 20,
                             fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.location_on,
-                        color: Color(0xFF8162FF),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        'Av. São Sebastião, 357, São Paulo',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.location_on,
+                          color: Color(0xFF8162FF),
                         ),
-                      ),
-                    ],
-                  ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          'blablabla',
+                          style: TextStyle(
+                            color: const Color(0xFFFFFFFF),
+                            fontSize: 14,
+                          ),
+                        )
+                      ]),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -125,7 +126,7 @@ class _BarberCardPageState extends State<BarberCardPage> {
                       Text(
                         '5,0 (889 Avaliações)',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: const Color(0xFFFFFFFF),
                           fontSize: 14,
                         ),
                       ),
@@ -146,39 +147,26 @@ class _BarberCardPageState extends State<BarberCardPage> {
                 children: [
                   CustomButton.primary(
                     text: 'Serviço',
-                    size: null,
-                    route: 'null',
+                    onPressedFunction: () {},
                   ),
                   const SizedBox(
                     width: 10,
                   ),
                   CustomButton.quarter(
                     text: 'Informações',
-                    size: null,
-                    route: 'null',
+                    onPressedFunction: () {},
                   )
                 ],
               ),
             ),
-            const Column(
-              children: [
-                ServiceCard(
-                  serviceTitle: 'Cortar o Cabelo',
-                  serviceDescription:
-                      'Estilo  personalizado com as últimas tendências',
-                  price: 'R\$ 50,00',
-                ),
-                ServiceCard(
-                  serviceTitle: 'Pézinho',
-                  serviceDescription: 'Fazendo pézinho',
-                  price: 'R\$ 20,00',
-                ),
-                ServiceCard(
-                  serviceTitle: 'Pézinho',
-                  serviceDescription: 'Fazendo pézinho',
-                  price: 'R\$ 20,00',
-                ),
-              ],
+            Column(
+              children: dados[0].services.map((service) {
+                return ServiceCard(
+                  serviceTitle: service.name,
+                  serviceDescription: service.description,
+                  price: 'R\$ ${service.price}',
+                );
+              }).toList(),
             ),
           ],
         ),
