@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 class HomeCubit extends Cubit<HomeStates> {
   HomeCubit()
       : super(
-          LoadingHomeState(loading: true),
+          InitialHomeState(),
         );
 
   Future<void> changeMood() async {
@@ -13,7 +13,7 @@ class HomeCubit extends Cubit<HomeStates> {
         LoadingHomeState(loading: true),
       );
       await Future.delayed(
-        const Duration(seconds: 2),
+        const Duration(seconds: 6),
       );
       emit(
         LoadedHomeState(),

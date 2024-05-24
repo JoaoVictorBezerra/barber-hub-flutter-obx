@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -7,13 +6,14 @@ class CustomButton extends StatelessWidget {
   late final Color textColor;
   late final Color border;
   late final double? size;
-  late final String? route;
+  late final Function onPressedFunction;
+  late final bool? expanded;
 
   CustomButton.primary({
     Key? key,
     required this.text,
-    required this.size,
-    required this.route,
+    required this.onPressedFunction,
+    this.expanded,
   }) : super(key: key) {
     backgroundColor = const Color(0xFF8162FF);
     textColor = const Color(0xFFFFFFFF);
@@ -23,8 +23,8 @@ class CustomButton extends StatelessWidget {
   CustomButton.secundary({
     Key? key,
     required this.text,
-    required this.size,
-    required this.route,
+    required this.onPressedFunction,
+    this.expanded,
   }) : super(key: key) {
     backgroundColor = const Color(0xFF26272B);
     textColor = const Color(0xFFFFFFFF);
@@ -34,8 +34,8 @@ class CustomButton extends StatelessWidget {
   CustomButton.tertiary({
     Key? key,
     required this.text,
-    required this.size,
-    required this.route,
+    required this.onPressedFunction,
+    this.expanded,
   }) : super(key: key) {
     backgroundColor = const Color(0xFFEF4444);
     textColor = const Color(0xFFFFFFFF);
@@ -45,8 +45,8 @@ class CustomButton extends StatelessWidget {
   CustomButton.quarter({
     Key? key,
     required this.text,
-    required this.size,
-    required this.route,
+    required this.onPressedFunction,
+    this.expanded,
   }) : super(key: key) {
     textColor = const Color(0xFFFFFFFF);
     border = const Color(0xFF26272B);
@@ -55,8 +55,13 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (expanded ?? false) {
+      size = MediaQuery.sizeOf(context).width * 1;
+    } else {
+      size = null;
+    }
+
     return SizedBox(
-      //width: MediaQuery.sizeOf(context).width,
       width: size,
       child: ElevatedButton(
         style: ButtonStyle(
@@ -67,7 +72,9 @@ class CustomButton extends StatelessWidget {
                 side: BorderSide(color: border)),
           ),
         ),
-        onPressed: () => Modular.to.navigate(route!),
+        onPressed: () => {
+          onPressedFunction(),
+        },
         child: Text(
           text,
           style: TextStyle(

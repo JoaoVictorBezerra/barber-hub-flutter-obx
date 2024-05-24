@@ -12,7 +12,7 @@ class BarberShopModule extends Module {
   void routes(r) {
     r.child(
       Modular.initialRoute,
-      child: (context) => const BarberCardPage(),
+      child: (context) => const BarberShopPage(),
     );
   }
 }

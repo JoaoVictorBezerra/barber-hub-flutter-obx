@@ -12,15 +12,15 @@ class AppModule extends Module {
       module: HomeModule(),
     );
     r.module(
-      '/login',
+      '/login/',
       module: LoginModule(),
     );
     r.module(
-      '/register',
+      '/register/',
       module: RegisterModule(),
     );
     r.module(
-      '/barbershop',
+      '/barbershop/',
       module: BarberShopModule(),
     );
   }

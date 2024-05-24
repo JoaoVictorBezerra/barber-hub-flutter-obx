@@ -1,14 +1,17 @@
 import 'package:barbershop/widgets/button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-class BarbershopCard extends StatelessWidget {
+class BarberShopCard extends StatelessWidget {
   final String title;
   final String address;
+  final String? id;
 
-  const BarbershopCard({
+  const BarberShopCard({
     super.key,
     required this.title,
     required this.address,
+    this.id,
   });
 
   @override
@@ -31,7 +34,7 @@ class BarbershopCard extends StatelessWidget {
             height: 159,
             padding: const EdgeInsets.only(top: 8, left: 4, right: 4),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: const Color(0xFFFFFFFF),
               borderRadius: BorderRadius.circular(16),
             ),
           ),
@@ -42,7 +45,8 @@ class BarbershopCard extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                  style: const TextStyle(
+                      color: const Color(0xFFFFFFFF), fontSize: 16),
                 ),
                 Text(
                   address,
@@ -53,8 +57,10 @@ class BarbershopCard extends StatelessWidget {
                 ),
                 CustomButton.secundary(
                   text: 'Reservar',
-                  size: MediaQuery.sizeOf(context).width,
-                  route: '/barbershop',
+                  expanded: true,
+                  onPressedFunction: () {
+                    Modular.to.pushNamed('/barbershop/');
+                  },
                 )
               ],
             ),

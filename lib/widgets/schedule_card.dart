@@ -11,7 +11,6 @@ class ScheduleCard extends StatelessWidget {
     BuildContext context,
   ) {
     return Container(
-      // height: 111,
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: const Color(0xFF1A1B1F),
@@ -35,7 +34,7 @@ class ScheduleCard extends StatelessWidget {
                 'Corte de Cabelo',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.white,
+                  color: const Color(0xFFFFFFFF),
                 ),
               ),
               const SizedBox(height: 8),
@@ -54,7 +53,7 @@ class ScheduleCard extends StatelessWidget {
                     'Vintage Barber',
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.white,
+                      color: const Color(0xFFFFFFFF),
                     ),
                   ),
                 ],
@@ -68,21 +67,21 @@ class ScheduleCard extends StatelessWidget {
                 'Maio',
                 style: TextStyle(
                   fontSize: 14,
-                  color: Colors.white,
+                  color: const Color(0xFFFFFFFF),
                 ),
               ),
               Text(
                 '10',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.white,
+                  color: const Color(0xFFFFFFFF),
                 ),
               ),
               Text(
                 '10:00',
                 style: TextStyle(
                   fontSize: 14,
-                  color: Colors.white,
+                  color: const Color(0xFFFFFFFF),
                 ),
               ),
             ],
