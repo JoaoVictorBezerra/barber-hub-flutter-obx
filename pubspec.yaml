@@ -41,6 +41,7 @@ dependencies:
 
   design_system_obx: 
     path: "../barber-hub-design-system-obx"
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
