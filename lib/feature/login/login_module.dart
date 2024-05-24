@@ -11,7 +11,7 @@ class LoginModule extends Module {
   @override
   void routes(r) {
     r.child(
-      '/login',
+      Modular.initialRoute,
       child: (context) => const LoginPage(),
     );
   }
