@@ -1,14 +1,14 @@
-class LoginRequestDTO {
+class UserEntity {
   String email;
   String password;
 
-  LoginRequestDTO({
+  UserEntity({
     required this.email,
     required this.password,
   });
 
-  factory LoginRequestDTO.fromJson(Map<String, dynamic> json) {
-    return LoginRequestDTO(
+  factory UserEntity.fromJson(Map<String, dynamic> json) {
+    return UserEntity(
       email: json['email'] as String,
       password: json['password'] as String,
     );

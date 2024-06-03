@@ -1,6 +1,5 @@
-import 'package:barbershop/feature/barbershop/utils/data_barbershop.dart';
 import 'package:barbershop/widgets/button.dart';
-import 'package:barbershop/widgets/service_card.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -27,8 +26,7 @@ class _BarberShopPageState extends State<BarberShopPage> {
                   width: MediaQuery.sizeOf(context).width,
                   height: 250,
                   child: Container(
-                    decoration:
-                        const BoxDecoration(color: const Color(0xFFFFFFFF)),
+                    decoration: const BoxDecoration(color: Color(0xFFFFFFFF)),
                   ),
                 ),
                 Padding(
@@ -47,7 +45,7 @@ class _BarberShopPageState extends State<BarberShopPage> {
                         child: IconButton(
                           icon: const Icon(
                             Icons.arrow_back_ios_new,
-                            color: const Color(0xFFFFFFFF),
+                            color: Color(0xFFFFFFFF),
                           ),
                           onPressed: () => {
                             Modular.to.pop(),
@@ -64,7 +62,7 @@ class _BarberShopPageState extends State<BarberShopPage> {
                         child: IconButton(
                           icon: const Icon(
                             Icons.menu,
-                            color: const Color(0xFFFFFFFF),
+                            color: Color(0xFFFFFFFF),
                           ),
                           onPressed: () {},
                         ),
@@ -87,7 +85,7 @@ class _BarberShopPageState extends State<BarberShopPage> {
                       Text(
                         'barbeiro',
                         style: TextStyle(
-                            color: const Color(0xFFFFFFFF),
+                            color: Color(0xFFFFFFFF),
                             fontSize: 20,
                             fontWeight: FontWeight.w600),
                       ),
@@ -107,7 +105,7 @@ class _BarberShopPageState extends State<BarberShopPage> {
                         Text(
                           'blablabla',
                           style: TextStyle(
-                            color: const Color(0xFFFFFFFF),
+                            color: Color(0xFFFFFFFF),
                             fontSize: 14,
                           ),
                         )
@@ -126,7 +124,7 @@ class _BarberShopPageState extends State<BarberShopPage> {
                       Text(
                         '5,0 (889 Avaliações)',
                         style: TextStyle(
-                          color: const Color(0xFFFFFFFF),
+                          color: Color(0xFFFFFFFF),
                           fontSize: 14,
                         ),
                       ),
@@ -159,15 +157,15 @@ class _BarberShopPageState extends State<BarberShopPage> {
                 ],
               ),
             ),
-            Column(
-              children: dados[0].services.map((service) {
-                return ServiceCard(
-                  serviceTitle: service.name,
-                  serviceDescription: service.description,
-                  price: 'R\$ ${service.price}',
-                );
-              }).toList(),
-            ),
+            // Column(
+            //   children: dados[0].services.map((service) {
+            //     return ServiceCard(
+            //       serviceTitle: service.name,
+            //       serviceDescription: service.description,
+            //       price: 'R\$ ${service.price}',
+            //     );
+            //   }).toList(),
+            // ),
           ],
         ),
       ),

@@ -1,12 +1,14 @@
-import 'package:barbershop/feature/barbershop/utils/data_barbershop.dart';
+import 'package:barbershop/feature/barbershop/entity/barbershop_entity.dart';
+import 'package:barbershop/feature/barbershop/services/barbershop_service.dart';
 import 'package:barbershop/feature/home/cubits/home_cubit.dart';
 import 'package:barbershop/feature/home/cubits/home_states.dart';
 import 'package:barbershop/widgets/barbershop_card.dart';
 import 'package:barbershop/widgets/shimmer_barbershop_card.dart';
 import 'package:barbershop/widgets/shimmer_schedule_card.dart';
+import 'package:barbershop/widgets/welcome_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../widgets/schedule_card.dart';
@@ -23,6 +25,18 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+BarbershopService barbershopService = BarbershopService();
+Future<List<BarberShopCard>> getBarbershopList() async {
+  List<BarbershopEntity> barbershops = await barbershopService.getBarbershop();
+  return barbershops.map((barbershops) {
+    return BarberShopCard(
+      title: barbershops.name,
+      address: barbershops.address,
+      id: barbershops.id,
+    );
+  }).toList();
+}
+
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
@@ -33,14 +47,16 @@ class _HomePageState extends State<HomePage> {
         toolbarHeight: 88,
         title: const Text(
           'FSW BARBER',
-          style: TextStyle(color: const Color(0xFFFFFFFF)),
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Modular.to.navigate('/login/');
+            },
             icon: const Icon(
               Icons.menu,
-              color: const Color(0xFFFFFFFF),
+              color: Color(0xFFFFFFFF),
             ),
           )
         ],
@@ -183,33 +199,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Column(
                       children: [
-                        const SizedBox(
-                          height: 88,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Olá, faça seu login!',
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        color: const Color(0xFFFFFFFF),
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                  Text(
-                                    'Sexta, 10 de Maio',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: const Color(0xFFFFFFFF)),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                        const WelcomeCard(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -277,23 +267,40 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                         const SizedBox(height: 10),
-                        GridView.count(
-                          childAspectRatio: 0.6,
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          primary: false,
-                          padding: const EdgeInsets.all(0),
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          crossAxisCount: 2,
-                          children: dados.map((barbershop) {
-                            return BarberShopCard(
-                              title: barbershop.name,
-                              address: barbershop.address,
-                              id: barbershop.id,
-                            );
-                          }).toList(),
-                        ),
+                        // GridView.count(
+                        //     childAspectRatio: 0.6,
+                        //     scrollDirection: Axis.vertical,
+                        //     shrinkWrap: true,
+                        //     primary: false,
+                        //     padding: const EdgeInsets.all(0),
+                        //     crossAxisSpacing: 10,
+                        //     mainAxisSpacing: 10,
+                        //     crossAxisCount: 2,
+                        //     // children: dados.map((barbershop) {
+                        //     //   return BarberShopCard(
+                        //     //     title: barbershop.name,
+                        //     //     address: barbershop.address,
+                        //     //     id: barbershop.id,
+                        //     //   );
+                        //     // }).toList(),
+                        //     children: [
+                        //       getBarbershopList(),
+                        //     ],),
+                        FutureBuilder<List<Widget>>(
+                          future: getBarbershopList(),
+                          builder: (context, snapshot) {
+                            return GridView.count(
+                                childAspectRatio: 0.6,
+                                scrollDirection: Axis.vertical,
+                                shrinkWrap: true,
+                                primary: false,
+                                padding: const EdgeInsets.all(0),
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 10,
+                                crossAxisCount: 2,
+                                children: snapshot.data!);
+                          },
+                        )
                       ],
                     ),
                   );

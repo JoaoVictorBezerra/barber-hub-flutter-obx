@@ -1,19 +1,19 @@
-class ServiceDTO {
+class BarbershopServiceEntity {
   String name;
   String description;
-  int price;
+  double price;
 
-  ServiceDTO({
+  BarbershopServiceEntity({
     required this.name,
     required this.description,
     required this.price,
   });
 
-  factory ServiceDTO.fromJson(Map<String, dynamic> json) {
-    return ServiceDTO(
+  factory BarbershopServiceEntity.fromJson(Map<String, dynamic> json) {
+    return BarbershopServiceEntity(
       name: json['name'] as String,
       description: json['description'] as String,
-      price: json['price'] as int,
+      price: json['price'] as double,
     );
   }
 }

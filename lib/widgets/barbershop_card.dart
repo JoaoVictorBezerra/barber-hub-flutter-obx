@@ -45,8 +45,8 @@ class BarberShopCard extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
-                      color: const Color(0xFFFFFFFF), fontSize: 16),
+                  style:
+                      const TextStyle(color: Color(0xFFFFFFFF), fontSize: 16),
                 ),
                 Text(
                   address,
